@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.modal {
+    @apply scale-100 opacity-100;
+}
+
+.modal-closed {
+    @apply scale-95 opacity-0 pointer-events-none;
+    transform: translateY(-5%);
+}

@@ -9,7 +9,9 @@ import { Keyboard } from './components/keyboard'
 const App = (): JSX.Element => {
   const [theme, setTheme] = useState('dark')
   const [showInstruccions, setShowInstruccions] = useState(false)
-  const [showStatistics, setShowStatistics] = useState(false)
+  const [showStatistics, setShowStatistics] = useState(true)
+  const [isRunning, setIsRunning] = useState(true)
+  const [resetTimer, setResetTimer] = useState(false)
 
   useEffect(() => {
     const isNewPlayer = Cookies.get('newPlayer')
@@ -26,8 +28,8 @@ const App = (): JSX.Element => {
 
   return (
     <div className=' bg-neutral-50 dark:bg-slate-900 w-screen h-screen'>
-        <Instructions show={showInstruccions}/>
-        {/* <Results show={showStatistics}/>  */}
+        <Instructions show={showInstruccions} close={setShowInstruccions}/>
+        <Results show={showStatistics} close={setShowStatistics}/>
         <div className="flex flex-col items-center h-[100vh] pt-4 w-full">
           <Header/>
           <Board/>
