@@ -1,0 +1,1 @@
+export type LetterStatus = "empty" | "absent" | "present" | "correct";
