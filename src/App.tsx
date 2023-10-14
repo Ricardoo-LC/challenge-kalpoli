@@ -64,7 +64,7 @@ const App = (): JSX.Element => {
         <Results show={showStatistics} close={setShowStatistics} word={selectedWord} plays={plays} victories={victories} gameStatus={gameStatus}>
           <CountdownTimer setNewGame={resetGame}/>
         </Results>
-        <div className="flex flex-col items-center h-[100vh] pt-4 w-full">
+        <div className="flex flex-col items-center pt-4 h-screen w-screen">
           <Header showInstructions={setShowInstruccions} showStadistics={setShowStatistics}/>
           <Board selectedWord={selectedWord} gameStatus={gameStatus} setGameStatus={setGameStatus} isReset={gameReset} setReset={setGameReset}/>
         </div>

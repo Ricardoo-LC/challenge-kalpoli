@@ -60,6 +60,12 @@ export const Board = ({ selectedWord, gameStatus, setGameStatus, isReset, setRes
     }
   }, [isReset])
 
+  useEffect(() => {
+    if (inputUser.length === 5) {
+      onEnter()
+    }
+  }, [inputUser])
+
   useWindow('keydown', handleKeyDown)
 
   function handleKeyDown (event: KeyboardEvent) {
@@ -120,7 +126,7 @@ export const Board = ({ selectedWord, gameStatus, setGameStatus, isReset, setRes
 
   return (
     <>
-    <div className='pt-10 pb-10'>
+    <div className='pt-10 pb-10 sm:pt-1 sm:pb-5 md:pt-5 md:pb-5'>
       {wordsEntered.map((word, index) => (
         <WordComplete key={index} word={selectedWord} input={word}/>
       ))}
