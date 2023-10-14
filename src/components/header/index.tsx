@@ -20,11 +20,11 @@ export const Header = ({ showInstructions, showStadistics }: Props) => {
             </svg>
             <p className="text-4xl font-bold font-roboto tracking-[.10em]">WORDLE</p>
             <div className="flex items-center">
-                <svg className="w-8 h-8 cursor-pointer" viewBox="0 0 40 36" fill="currentColor" xmlns="http://www.w3.org/2000/svg" onClick={handleClickStadistics}>
-                    <rect x="4.93549" y="6" width="29.6129" height="24" rx="2" fill="fill-neutral-600 dark:fill-neutral-200" fillOpacity="0.49"/>
-                    <path d="M13.1613 15L13.1613 24" stroke="white" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M19.7419 18V24" stroke="white" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M26.3226 12V24" stroke="white" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+                <svg className="w-8 h-8 cursor-pointer fill-neutral-600 dark:fill-neutral-200" viewBox="0 0 40 36" xmlns="http://www.w3.org/2000/svg" onClick={handleClickStadistics}>
+                  <rect x="4.93549" y="6" width="29.6129" height="24" rx="2" className="bg-blue-500 bg-opacity-49" />
+                  <path d="M13.1613 15L13.1613 24" className="stroke-white dark:stroke-black stroke-2" strokeLinecap="round" strokeLinejoin="round" />
+                  <path d="M19.7419 18V24" className="stroke-white dark:stroke-black stroke-2" strokeLinecap="round" strokeLinejoin="round" />
+                  <path d="M26.3226 12V24" className="stroke-white dark:stroke-black stroke-2" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
                 <Switch/>
             </div>
