@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 import WordComplete from './wordComplete'
 import WordCurrent from './wordCurrent'
@@ -10,6 +10,10 @@ import Keyboard from '../keyboard'
 
 interface BoardProps {
   selectedWord: string;
+  gameStatus: GameStatus;
+  setGameStatus: (value: GameStatus) => void;
+  isReset: boolean;
+  setReset: (value: boolean) => void;
 }
 
 const keys = [
@@ -42,11 +46,19 @@ const keys = [
   'M'
 ]
 
-export const Board = ({ selectedWord }: BoardProps) => {
+export const Board = ({ selectedWord, gameStatus, setGameStatus, isReset, setReset }: BoardProps) => {
   const [turn, setTurn] = useState<number>(1)
   const [inputUser, setInputUser] = useState<string>('')
   const [wordsEntered, setWordsEntered] = useState<string[]>([])
-  const [gameStatus, setGameStatus] = useState<GameStatus>(GameStatus.Playing)
+
+  useEffect(() => {
+    if (isReset) {
+      setWordsEntered([])
+      setTurn(1)
+      setInputUser('')
+      setReset(false)
+    }
+  }, [isReset])
 
   useWindow('keydown', handleKeyDown)
 

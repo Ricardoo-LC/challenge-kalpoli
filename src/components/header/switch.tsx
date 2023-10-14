@@ -1,12 +1,10 @@
 import { useState, useEffect } from 'react'
 import darkMode from '../../assets/header/switch-bg-dark.svg'
 import lightMode from '../../assets/header/switch-bg-light.svg'
-import dotLight from '../../assets/header/switch-btn-light.svg'
-import dotDark from '../../assets/header/switch-btn-dark.svg'
 
 const Switch = () => {
   const [theme, setTheme] = useState('light')
-  const [isChecked, setIsChecked] = useState(false)
+  const [isChecked, setIsChecked] = useState(true)
 
   useEffect(() => {
     if (theme === 'dark') {
@@ -22,21 +20,15 @@ const Switch = () => {
   }
 
   return (
-  //    <label className="relative inline-flex items-center cursor-pointer ml-1">
-  //         <input type="checkbox" value="hola" className="sr-only peer" onClick={handleCheckboxChange}/>
-  //         <div className="w-14 h-8 rounded-full relative">
-  //             <div className="w-8 h-8 rounded-full absolute top-[-5%] transform [-translate-y-1/2] transition-transform peer-checked:after:content-[''] peer-checked:after:absolute peer-checked:after:top-1/2 peer-checked:after:-translate-y-1/2 peer-checked:after:left-[12px] peer-checked:after:w-5 peer-checked:after:h-5 peer-checked:after:border-gray-300 peer-checked:after:border peer-checked:after:rounded-full dark:border-gray-600 peer-checked:after:transform peer-checked:after:translate-x-5">
-  //             {isChecked ? <img src={dotLight} alt="Logo" /> : <img src={dotDark} alt="Logo" />}
-  //             </div>
-  //             {isChecked ? <img src={lightMode} alt="Logo" /> : <img src={darkMode} alt="Logo" />}
-  //         </div>
-  //     </label>
-    <label className="relative inline-flex items-center cursor-pointer ml-1">
-        <input type="checkbox" value="hola" className="sr-only peer" onClick={handleCheckboxChange}/>
-        <div className="w-14 h-8 rounded-full peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[4px] after:left-[4px] after:left-[13px] after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 ">
-            {isChecked ? <img src={lightMode} alt="Logo" /> : <img src={darkMode} alt="Logo" />}
-        </div>
-    </label>
+  <label htmlFor="toggleB" className="flex items-center cursor-pointer">
+    <div className="relative">
+      <input type="checkbox" id="toggleB" className="sr-only" checked={!!isChecked} onClick={handleCheckboxChange}/>
+      <div className="block  w-14 h-8 rounded-full">
+        {isChecked ? <img src={lightMode} alt="bg-light-mode" /> : <img src={darkMode} alt="bg-dark-mode" />}
+      </div>
+      <div className="dot absolute left-1 top-[3px] w-6 h-6 rounded-full transition"></div>
+    </div>
+  </label>
   )
 }
 

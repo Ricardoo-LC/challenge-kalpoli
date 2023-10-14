@@ -8,9 +8,9 @@ interface KeyProps {
 
 export const Key = ({ value, status, onKeyPressed }: KeyProps) => {
   const widhtBoxes = {
-    ENTER: 'h-16 w-24',
-    DELETE: 'h-16 w-24',
-    default: 'h-16 w-16'
+    ENTER: 'w-20',
+    DELETE: 'w-20',
+    default: 'w-12'
   }
 
   const eventsKeys = {
@@ -35,7 +35,7 @@ export const Key = ({ value, status, onKeyPressed }: KeyProps) => {
   const eventKey = eventsKeys[value] || eventsKeys.default
 
   return (
-    <div className={`${widhtBox} bg-gray-300 dark:bg-[#565F7E] rounded-[5px] flex items-center justify-center text-center cursor-pointer`} onClick={(e) => eventKey(e)}>
+    <div className={`h-14 ${widhtBox} bg-gray-300 dark:bg-[#565F7E] rounded-[5px] flex items-center justify-center text-center cursor-pointer`} onClick={(e) => eventKey(e)}>
       <p className="text-xl font-bold font-roboto text-stone-600 dark:text-white">
         {value === 'DELETE'
           ? (

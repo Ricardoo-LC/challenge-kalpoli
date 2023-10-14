@@ -13,7 +13,7 @@ const LETTER_ABSENT = 'CANTO'
 export const Instructions = ({ show, close }: Props) => {
   const handleClick = () => {
     close(false)
-    Cookies.set('newPlayer', 'true', { expires: 30 })
+    Cookies.set('newPlayer', 'false', { expires: 30 })
   }
 
   return (

@@ -10,3 +10,16 @@
     @apply scale-95 opacity-0 pointer-events-none;
     transform: translateY(-5%);
 }
+
+input:not(:checked)~.dot {
+    background-image: url('./src/assets/header/switch-btn-dark.svg');
+    background-position: center;
+    background-size: 120%;
+}
+
+input:checked~.dot {
+    transform: translateX(100%);
+    background-image: url('./src/assets/header/switch-btn-light.svg');
+    background-position: center;
+    background-size: 120%;
+}

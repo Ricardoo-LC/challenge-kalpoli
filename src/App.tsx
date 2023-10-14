@@ -7,20 +7,36 @@ import { Board } from './components/board'
 import CountdownTimer from './components/board/timer'
 import { dictionary } from './dictionary/words.js'
 import { useLocalStorage } from './hooks/useLocalStorage.js'
+import { GameStatus } from './components/types.js'
+import { removeAccents } from './helpers/format.js'
 
 const App = (): JSX.Element => {
+  const [gameStatus, setGameStatus] = useState<GameStatus>(GameStatus.Playing)
   const [selectedWord, setSelectedWord] = useState<string>('')
   const [usedWords, setUsedWords] = useState<string[]>([])
-  const [showInstruccions, setShowInstruccions] = useState<boolean>(true)
+  const [showInstruccions, setShowInstruccions] = useState<boolean>(false)
   const [showStatistics, setShowStatistics] = useState<boolean>(false)
   const [victories, setVictories] = useLocalStorage('victories', 0)
   const [plays, setPlays] = useLocalStorage('plays', 0)
+  const [gameReset, setGameReset] = useState<boolean>(false)
 
   useEffect(() => {
     const isNewPlayer = Cookies.get('newPlayer')
-    if (isNewPlayer !== undefined) setShowInstruccions(false)
+    if (isNewPlayer === undefined) setShowInstruccions(true)
     getNewWord()
   }, [])
+
+  useEffect(() => {
+    setShowStatistics(gameStatus === GameStatus.Won || gameStatus === GameStatus.Lost)
+    if (gameStatus === GameStatus.Won) {
+      setVictories(victories + 1)
+      setPlays(plays + 1)
+    }
+
+    if (gameStatus === GameStatus.Lost) {
+      setPlays(plays + 1)
+    }
+  }, [gameStatus])
 
   function getNewWord () {
     const randomIndex = Math.floor(Math.random() * dictionary.length)
@@ -32,18 +48,26 @@ const App = (): JSX.Element => {
     }
 
     setUsedWords((prevUsedWords) => [...prevUsedWords, word])
-    setSelectedWord(word.toUpperCase())
+
+    setSelectedWord(removeAccents(word.toUpperCase()))
+  }
+
+  function resetGame () {
+    setGameReset(true)
+    getNewWord()
+    setGameStatus(GameStatus.Playing)
   }
 
   return (
-    <div className=' bg-neutral-50 dark:bg-slate-900 w-screen h-screen'>
+    <div className=' bg-neutral-50 dark:bg-slate-900 w-full h-full'>
+      <h3>{selectedWord}</h3>
         <Instructions show={showInstruccions} close={setShowInstruccions}/>
-        <Results show={showStatistics} close={setShowStatistics} word={selectedWord} plays={plays} victories={victories}>
-          <CountdownTimer setNewWord={() => getNewWord()}/>
+        <Results show={showStatistics} close={setShowStatistics} word={selectedWord} plays={plays} victories={victories} gameStatus={gameStatus}>
+          <CountdownTimer setNewGame={resetGame}/>
         </Results>
         <div className="flex flex-col items-center h-[100vh] pt-4 w-full">
           <Header showInstructions={setShowInstruccions} showStadistics={setShowStatistics}/>
-          <Board selectedWord={selectedWord}/>
+          <Board selectedWord={selectedWord} gameStatus={gameStatus} setGameStatus={setGameStatus} isReset={gameReset} setReset={setGameReset}/>
         </div>
     </div>
   )

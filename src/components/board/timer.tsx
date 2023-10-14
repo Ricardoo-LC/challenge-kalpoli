@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react'
 
 interface TimerProps {
-  setNewWord: () => void;
+  setNewGame: () => void;
 }
-const CountdownTimer = ({ setNewWord }: TimerProps) => {
+const CountdownTimer = ({ setNewGame }: TimerProps) => {
   const initialDuration = 5 * 60
   const [duration, setDuration] = useState(initialDuration)
 
@@ -13,7 +13,7 @@ const CountdownTimer = ({ setNewWord }: TimerProps) => {
         setDuration(duration - 1)
       } else {
         setDuration(initialDuration)
-        setNewWord()
+        setNewGame()
       }
     }, 1000)
 

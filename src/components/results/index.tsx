@@ -1,13 +1,17 @@
+import { ReactNode } from 'react'
+import { GameStatus } from '../types'
+
 interface Props {
-  children: Element;
+  children: ReactNode;
   show: boolean;
   close: (value: boolean) => void;
   word: string;
   plays: number;
   victories: number;
+  gameStatus: GameStatus
 }
 
-export const Results = ({ children, show, close, word, plays, victories }: Props) => {
+export const Results = ({ children, show, close, word, plays, victories, gameStatus }: Props) => {
   const handleClick = () => {
     close(false)
   }
@@ -27,6 +31,11 @@ export const Results = ({ children, show, close, word, plays, victories }: Props
                     <span className="mt-2 text-xl font-semibold">Victorias</span>
                 </div>
                 </div>
+                {gameStatus === GameStatus.Lost && (
+                  <p className="whitespace-normal text-center pt-6">
+                      La palabra era: {word}
+                  </p>
+                )}
                 <p className="whitespace-normal text-center pt-6">
                     SIGUIENTE PALABRA
                 </p>
