@@ -6,9 +6,9 @@ import { Header } from './components/header'
 import { Board } from './components/board'
 import CountdownTimer from './components/board/timer'
 import { dictionary } from './dictionary/words.js'
-import { useLocalStorage } from './hooks/useLocalStorage.js'
-import { GameStatus } from './components/types.js'
-import { removeAccents } from './helpers/format.js'
+import { useLocalStorage } from './hooks/useLocalStorage.ts'
+import { GameStatus } from './components/types.ts'
+import { removeAccents } from './helpers/format.ts'
 
 const App = (): JSX.Element => {
   const [gameStatus, setGameStatus] = useState<GameStatus>(GameStatus.Playing)
@@ -60,7 +60,6 @@ const App = (): JSX.Element => {
 
   return (
     <div className=' bg-neutral-50 dark:bg-slate-900 w-full h-full'>
-      <h3>{selectedWord}</h3>
         <Instructions show={showInstruccions} close={setShowInstruccions}/>
         <Results show={showStatistics} close={setShowStatistics} word={selectedWord} plays={plays} victories={victories} gameStatus={gameStatus}>
           <CountdownTimer setNewGame={resetGame}/>

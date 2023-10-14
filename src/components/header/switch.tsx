@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react'
+import { useLocalStorage } from '../../hooks/useLocalStorage'
 import darkMode from '../../assets/header/switch-bg-dark.svg'
 import lightMode from '../../assets/header/switch-bg-light.svg'
 
 const Switch = () => {
-  const [theme, setTheme] = useState('light')
-  const [isChecked, setIsChecked] = useState(true)
+  const [theme, setTheme] = useLocalStorage('themeGameKalpoli', 'light')
+  const [isChecked, setIsChecked] = useState(theme === 'light')
 
   useEffect(() => {
     if (theme === 'dark') {
