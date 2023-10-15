@@ -5,7 +5,7 @@ interface TimerProps {
 }
 const CountdownTimer = ({ setNewGame }: TimerProps) => {
   const initialDuration = 5 * 60
-  const [duration, setDuration] = useState(initialDuration)
+  const [duration, setDuration] = useState<number>(initialDuration)
 
   useEffect(() => {
     const timer = setTimeout(() => {

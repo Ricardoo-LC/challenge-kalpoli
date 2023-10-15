@@ -5,7 +5,7 @@ import lightMode from '../../assets/header/switch-bg-light.svg'
 
 const Switch = () => {
   const [theme, setTheme] = useLocalStorage('themeGameKalpoli', 'light')
-  const [isChecked, setIsChecked] = useState(theme === 'light')
+  const [isChecked, setIsChecked] = useState<boolean>(theme === 'light')
 
   useEffect(() => {
     if (theme === 'dark') {
