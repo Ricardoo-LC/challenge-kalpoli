@@ -20,10 +20,14 @@ const WordComplete = ({ word, input }: WordProps) => {
   }
 
   return (
-    <div className='pt-4 grid grid-cols-5 gap-5'>
-        {Array.from(Array(5)).map((_, index) => (
-            <Letter key={index} value={input[index]} status={checkLetter(input[index], index)}/>
-        ))}
+    <div className="pt-4 grid grid-cols-5 gap-5">
+      {Array.from(Array(5)).map((_, index) => (
+        <Letter
+          key={index}
+          value={input[index]}
+          status={checkLetter(input[index], index)}
+        />
+      ))}
     </div>
   )
 }

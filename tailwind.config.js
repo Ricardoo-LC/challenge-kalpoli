@@ -5,16 +5,16 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        roboto: ["Roboto", "sans"],
+        roboto: ["Roboto", "sans"]
       },
       colors: {
         correct: "#6AAA64",
         present: "#CEB02C",
         absent: "#939B9F",
         empty: "#3b414f",
-        instructions: "#FFFFFF",
-      },
-    },
+        instructions: "#FFFFFF"
+      }
+    }
   },
-  plugins: [],
+  plugins: []
 };

@@ -27,7 +27,9 @@ const App = (): JSX.Element => {
   }, [])
 
   useEffect(() => {
-    setShowStatistics(gameStatus === GameStatus.Won || gameStatus === GameStatus.Lost)
+    setShowStatistics(
+      gameStatus === GameStatus.Won || gameStatus === GameStatus.Lost
+    )
     if (gameStatus === GameStatus.Won) {
       setVictories(victories + 1)
       setPlays(plays + 1)
@@ -47,7 +49,7 @@ const App = (): JSX.Element => {
       word = dictionary[newIndex]
     }
 
-    setUsedWords((prevUsedWords) => [...prevUsedWords, word])
+    setUsedWords(prevUsedWords => [...prevUsedWords, word])
 
     setSelectedWord(removeAccents(word.toUpperCase()))
   }
@@ -59,15 +61,31 @@ const App = (): JSX.Element => {
   }
 
   return (
-    <div className=' bg-neutral-50 dark:bg-slate-900 w-full h-full'>
-        <Instructions show={showInstruccions} close={setShowInstruccions}/>
-        <Results show={showStatistics} close={setShowStatistics} word={selectedWord} plays={plays} victories={victories} gameStatus={gameStatus}>
-          <CountdownTimer setNewGame={resetGame}/>
-        </Results>
-        <div className="flex flex-col items-center pt-4 h-screen w-screen">
-          <Header showInstructions={setShowInstruccions} showStadistics={setShowStatistics}/>
-          <Board selectedWord={selectedWord} gameStatus={gameStatus} setGameStatus={setGameStatus} isReset={gameReset} setReset={setGameReset}/>
-        </div>
+    <div className=" bg-neutral-50 dark:bg-slate-900 w-full h-full">
+      <Instructions show={showInstruccions} close={setShowInstruccions} />
+      <Results
+        show={showStatistics}
+        close={setShowStatistics}
+        word={selectedWord}
+        plays={plays}
+        victories={victories}
+        gameStatus={gameStatus}
+      >
+        <CountdownTimer setNewGame={resetGame} />
+      </Results>
+      <div className="flex flex-col items-center pt-4 pb-4 h-full w-full min-h-screen">
+        <Header
+          showInstructions={setShowInstruccions}
+          showStadistics={setShowStatistics}
+        />
+        <Board
+          selectedWord={selectedWord}
+          gameStatus={gameStatus}
+          setGameStatus={setGameStatus}
+          isReset={gameReset}
+          setReset={setGameReset}
+        />
+      </div>
     </div>
   )
 }

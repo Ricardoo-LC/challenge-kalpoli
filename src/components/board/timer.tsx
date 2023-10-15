@@ -28,7 +28,7 @@ const CountdownTimer = ({ setNewGame }: TimerProps) => {
 
   return (
     <span>
-        {minutesString}:{secondsString}
+      {minutesString}:{secondsString}
     </span>
   )
 }

@@ -46,7 +46,13 @@ const keys = [
   'M'
 ]
 
-export const Board = ({ selectedWord, gameStatus, setGameStatus, isReset, setReset }: BoardProps) => {
+export const Board = ({
+  selectedWord,
+  gameStatus,
+  setGameStatus,
+  isReset,
+  setReset
+}: BoardProps) => {
   const [turn, setTurn] = useState<number>(1)
   const [inputUser, setInputUser] = useState<string>('')
   const [wordsEntered, setWordsEntered] = useState<string[]>([])
@@ -126,20 +132,20 @@ export const Board = ({ selectedWord, gameStatus, setGameStatus, isReset, setRes
 
   return (
     <>
-    <div className='pt-10 pb-10 sm:pt-1 sm:pb-5 md:pt-5 md:pb-5'>
-      {wordsEntered.map((word, index) => (
-        <WordComplete key={index} word={selectedWord} input={word}/>
-      ))}
-      {gameStatus === GameStatus.Playing
-        ? (
-           <WordCurrent word={inputUser}/>
-          )
-        : null}
-      {Array.from(Array(5 - turn)).map((_, index) => (
-        <WordEmpty key={index}/>
-      ))}
-    </div>
-    <Keyboard onKeyPressed={onKeyPressed}/>
+      <div className="pt-10 pb-10 sm:pt-1 sm:pb-5 md:pt-5 md:pb-5">
+        {wordsEntered.map((word, index) => (
+          <WordComplete key={index} word={selectedWord} input={word} />
+        ))}
+        {gameStatus === GameStatus.Playing
+          ? (
+          <WordCurrent word={inputUser} />
+            )
+          : null}
+        {Array.from(Array(5 - turn)).map((_, index) => (
+          <WordEmpty key={index} />
+        ))}
+      </div>
+      <Keyboard onKeyPressed={onKeyPressed} />
     </>
   )
 }
