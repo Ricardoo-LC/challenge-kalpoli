@@ -1,27 +1,37 @@
-# React + TypeScript + Vite
+# Challenge Kalpoli WORDLE
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![Vite](https://img.shields.io/badge/Vite-4.4.5-blueviolet)
+![React](https://img.shields.io/badge/React-18.2.0-blue)
+![Typescript](https://img.shields.io/badge/Typescript-5.0.2-red)
+![Tailwindcss](https://img.shields.io/badge/Tailwindcss-3.3.3-green)
 
-Currently, two official plugins are available:
+## Descripción
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Este es un proyecto para el challenge de Kalpoli creado con Vite, React, Typescript y Tailwindcss para mostrar cómo crear el juego WORDLE.
 
-## Expanding the ESLint configuration
+## Instalación y Configuración
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+1. Clona este repositorio: `git clone https://github.com/Ricardoo-LC/challenge-kalpoli.git`
+2. Navega a la carpeta del proyecto: `cd challenge-kalpoli`
+3. Instala las dependencias: `npm install`
 
-- Configure the top-level `parserOptions` property like this:
+## Uso
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+Para ejecutar el proyecto en modo de desarrollo:
+`npm run dev`
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+Para ejecutar pruebas unitarias:
+`npm run test`
+
+Para crear una versión de producción optimizada:
+`npm run build`
+## Licencia
+
+Este proyecto está bajo la Licencia de Ricardo Lopez Camacho.
+
+## Contacto
+
+Si tienes alguna pregunta o comentario, puedes contactarme a través de mi correo electrónico: richard.usui@gmail.com
+
+
+
